@@ -13,10 +13,6 @@
   },
   "author": "Alberto",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zodiak2290/demo/issues"
-  },
-  "homepage": "https://github.com/zodiak2290/demo#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
