@@ -37,6 +37,41 @@ function create(req, res){
 
 
 function getAll(req, res){
+  let fechaIni = req.query.fechaIni || "2010-01-01";
+  let fechaFin = req.query.fechaFin || "2020-02-01";
+  let size = req.query.size || 10;
+  let page = req.query.page || 0;
+  let dateIni = new Date(moment(fechaIni));
+  let dateFin = new Date( moment(fechaFin) );
+console.log(size);
+  Data.
+      find({
+          fecha: {
+              $gte: dateIni,
+              $lte: dateFin
+          }
+      })
+      .limit( Number(size) )
+      .skip(size * page)
+      .sort({'fecha': 1})
+      .exec(function(err, data) {
+        if(err) {
+            res.status(500).send( {
+                message: "No fue posible obtener data"
+            } );
+        } else {
+            if(!data) {
+                res.status(404).send( {
+                    message: "No tienes data cargada a esta categoria"
+                } );
+            } else {
+              res.status(200).send( {
+                  data: data
+              } );
+            }
+        }
+      });
+  /*
     var params = req.query;
     let page = params.page || 1;
     let limit = parseInt(params.limit) || 10;
@@ -64,7 +99,7 @@ function getAll(req, res){
               } );
             }
         }
-    });
+    });*/
 }
 
 
