@@ -1,6 +1,7 @@
 'use strict'
 //modelos
 var Data = require('../models/data');
+var moment = require('moment');
 
 function create(req, res){
     var id_categoria = req.params.idcategoria;
@@ -9,7 +10,7 @@ function create(req, res){
       var data = new Data();
       data.valor = params.valor;
       if(params.fecha){
-        data.fecha = moment(params.fecha).tz("America/Mexico_City").format();
+        data.fecha = params.fecha
       }
       if( params.comentarios ){
         data.comentarios = params.comentarios
@@ -68,5 +69,5 @@ function getAll(req, res){
 
 
 module.exports = {
-	create, getAll,
+	create, getAll
 };
