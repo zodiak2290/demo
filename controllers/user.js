@@ -26,7 +26,12 @@ function save(params, req, res){
 		    		if(!userStored) {
 		    			res.status(404).send({message: "Usuario no registrado"});
 		    		} else {
-		    			res.status(200).send({user: userStored});
+							let newUser= {};
+							newUser.name = userStored.name;
+							newUser.email = userStored.email;
+							newUser.username = userStored.username;
+							newUser._id = userStored._id;
+		    			res.status(200).send({newUser});
 		    		}
 		    	}
 		    });
